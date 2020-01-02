@@ -14,13 +14,28 @@ import './App.css'
 const particlesOptions = {
   particles: {
     number: {
-      value: 120,
-      density: {
-        enable: true,
-        value_area: 800
-      }
+      value: 200
+    },
+    size: {
+      value: 3
+    },
+    density: {
+      enable: true,
+      value_area: 800
+    },
+    move: {
+      enable: true,
+      speed: 4
     }
-  }
+  },
+  interactivity: {
+    onover: {
+      enable: true,
+      mode: 'grab'
+    }
+  },
+
+  retina_detect: true
 }
 
 const initialState = {
@@ -30,11 +45,11 @@ const initialState = {
   route: 'signin',
   isSignedIn: false,
   user: {
-    id: null,
-    name: null,
-    email: null,
+    id: '',
+    name: '',
+    email: '',
     entries: 0,
-    joined: null
+    joined: ''
   }
 }
 
@@ -46,11 +61,11 @@ class App extends React.Component {
     route: 'signin',
     isSignedIn: false,
     user: {
-      id: null,
-      name: null,
-      email: null,
+      id: '',
+      name: '',
+      email: '',
       entries: 0,
-      joined: null
+      joined: ''
     }
   }
 
