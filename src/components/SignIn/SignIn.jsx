@@ -15,7 +15,7 @@ class SignIn extends React.Component {
   }
 
   handleSubmit = event => {
-    fetch('https://git.heroku.com/boiling-ridge-36125.git/signin', {
+    fetch('https://boiling-ridge-36125.herokuapp.com/signin', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

@@ -18,7 +18,7 @@ class Register extends React.Component {
   }
 
   handleSubmit = e => {
-    fetch('https://git.heroku.com/boiling-ridge-36125.git/register', {
+    fetch('https://boiling-ridge-36125.herokuapp.com/register', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
