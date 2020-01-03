@@ -104,7 +104,7 @@ class App extends React.Component {
 
     this.setState({ imageUrl: this.state.input })
 
-    fetch('https://boiling-ridge-36125.herokuapp.com/imageurl', {
+    fetch('localhost:3000/imageurl', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -114,7 +114,7 @@ class App extends React.Component {
       .then(response => response.json())
       .then(response => {
         if (response) {
-          fetch('https://boiling-ridge-36125.herokuapp.com/image', {
+          fetch('localhost:3000/image', {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -146,14 +146,15 @@ class App extends React.Component {
   }
 
   render() {
+    const { isSignedIn, imageUrl, route, box } = this.state
     return (
       <div className='App'>
         <Particles className='particles' params={particlesOptions} />
         <Navigation
-          isSignedIn={this.state.isSignedIn}
+          isSignedIn={isSignedIn}
           onRouteChange={this.onRouteChange}
         />
-        {this.state.route === 'home' ? (
+        {route === 'home' ? (
           <div>
             <Logo />
             <Rank
@@ -164,10 +165,7 @@ class App extends React.Component {
               onInputChange={this.onInputChange}
               onButtonSubmit={this.onButtonSubmit}
             />
-            <FaceRecognition
-              box={this.state.box}
-              imageUrl={this.state.imageUrl}
-            />
+            <FaceRecognition box={box} imageUrl={imageUrl} />
           </div>
         ) : this.state.route === 'signin' ? (
           <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
